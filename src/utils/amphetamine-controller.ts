@@ -40,23 +40,23 @@ const _startTimedSession = async (
 };
 
 const _runAppleScriptCmd = async (
-  commandName: string,
+  name: string,
   command: string
 ): Promise<AmphetamineControllerResult> => {
   try {
     streamDeck.logger.info(
-      `Running AppleScript Command. command name: ${commandName}`
+      `Running AppleScript Command. command name: ${name}`
     );
 
-    const res = await runAppleScript(command);
+    const result = await runAppleScript(command);
 
     streamDeck.logger.info(
-      `Apple script command ${commandName} successfully executed. `
+      `Apple script command ${name} successfully executed. `
     );
 
     return {
       isSuccess: true,
-      result: res,
+      result,
     };
   } catch (e) {
     streamDeck.logger.error(e);

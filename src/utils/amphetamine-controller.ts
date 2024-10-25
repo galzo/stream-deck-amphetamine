@@ -22,6 +22,13 @@ export const endSession = async () => {
   );
 };
 
+export const checkSession = async () => {
+  return await _runAppleScriptCmd(
+    APPLE_SCRIPT_NAMES.checkSession,
+    APPLE_SCRIPT_COMMANDS.checkSession
+  );
+};
+
 const _startInfiniteSession = async () => {
   return await _runAppleScriptCmd(
     APPLE_SCRIPT_NAMES.startSession,

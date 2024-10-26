@@ -16,8 +16,8 @@ export const isInfiniteSession = (sessionDuration: number) => {
 };
 
 export const adaptSessionTime = (sessionDuration: number) => {
-  if (sessionDuration <= 0) {
-    throw new Error("Invalid duration. must be a positive number");
+  if (isInfiniteSession(sessionDuration)) {
+    throw new Error("Infinite duration doesn't have time");
   }
 
   const totalMinutesLeft = Math.round(sessionDuration / 60);

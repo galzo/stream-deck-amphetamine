@@ -1,11 +1,18 @@
 import { AmphetamineDuration } from "../types/amphetamine.types";
 
 export const isSessionActive = (sessionDuration?: number) => {
-  return sessionDuration && sessionDuration !== AmphetamineDuration.INACTIVE;
+  return Boolean(
+    sessionDuration !== undefined &&
+      sessionDuration > AmphetamineDuration.INACTIVE
+  );
 };
 
 export const isInfiniteSession = (sessionDuration: number) => {
-  return sessionDuration < 0;
+  if (!isSessionActive(sessionDuration)) {
+    throw new Error("Session is inactive");
+  }
+
+  return sessionDuration <= 0;
 };
 
 export const adaptSessionTime = (sessionDuration: number) => {
